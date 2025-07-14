@@ -1,4 +1,6 @@
 Flask
 python-dotenv
 praw
-
+transformers
+torch
+requests
