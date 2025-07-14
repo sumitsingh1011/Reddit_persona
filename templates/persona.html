@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Persona: {{ username }}</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="persona-container">
+    <!-- Profile card with Reddit profile info -->
+    <div class="profile-card">
+      {% if data.profile_img %}
+        <img src="{{ data.profile_img }}" alt="Reddit Avatar" class="avatar">
+      {% endif %}
+      <h1>{{ username }}</h1>
+      <p><strong>Total Karma:</strong> {{ data.total_karma }}</p>
+      <p><strong>About:</strong> {{ data.description or "No public description." }}</p>
+    </div>
+
+    <!-- Persona info -->
+    <div class="profile-details">
+      <section>
+        <h2>🎯 Traits</h2>
+        <ul>
+          <li>Empathetic and emotionally expressive</li>
+          <li>Supportive in emotional or social topics</li>
+          <li>Casual tone with humor and vulnerability</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>💡 Interests</h2>
+        <ul>
+          <li>r/BPDmemes</li>
+          <li>r/virgoseason</li>
+          <li>r/Parenting</li>
+          <li>r/USPS</li>
+          <li>r/Blackskincare</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>📌 Sample Comments</h2>
+        <ul>
+          {% for comment in data["comments"][:3] %}
+          <li>
+            “{{ comment.body }}”<br>
+            <small><a href="{{ comment.url }}" target="_blank">{{ comment.subreddit }}</a></small>
+          </li>
+          {% endfor %}
+        </ul>
+      </section>
+
+      <section>
+        <h2>🚨 Frustrations</h2>
+        <ul>
+          <li>Relationship issues</li>
+          <li>Work-related burnout</li>
+          <li>Miscommunication with others</li>
+        </ul>
+      </section>
+
+      <a href="/" class="back">🔁 Try Another Username</a>
+    </div>
+  </div>
+</body>
+</html>

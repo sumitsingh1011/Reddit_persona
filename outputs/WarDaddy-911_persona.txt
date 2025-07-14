@@ -1,0 +1,42 @@
+Create a detailed persona of a Reddit user including traits, interests, tone, social or political leanings. Use example posts or comment URLs.
+
+User data:
+{
+  "username": "WarDaddy-911",
+  "posts": [
+    {
+      "title": "Fotugrafy",
+      "selftext": "",
+      "subreddit": "Kashmiri",
+      "url": "https://reddit.com/r/Kashmiri/comments/1lx4lj4/fotugrafy/"
+    },
+    {
+      "title": "Fotugrafy",
+      "selftext": "Maanan waanan chun boi kenh",
+      "subreddit": "arpheur",
+      "url": "https://reddit.com/r/arpheur/comments/1lx2pgp/fotugrafy/"
+    },
+    {
+      "title": "\u2601\ufe0f",
+      "selftext": "Aasman hai khil utha, sabhi colourful hai yahan....",
+      "subreddit": "arpheur",
+      "url": "https://reddit.com/r/arpheur/comments/1lpogzd/_/"
+    }
+  ],
+  "comments": [
+    {
+      "body": "Thia video proves that his t-shirt should be saying I \u2764\ufe0f mom \ud83d\ude02\ud83d\ude2c",
+      "subreddit": "MadeMeSmile",
+      "url": "https://reddit.com/r/MadeMeSmile/comments/1lpogzd/smiles_made_me_smile_y_out_of_my_mind/?sort=new&sort_by=new&sort_r=0",
+     "body": "http://www.youtube.com/watch?v=K3zv_k2iOZJg",
+     }
+
+} ] }
+
+The above is the complete JSON file that will be used for the API. The JSON can be used to create a user profile and/or a profile image. You can use the API or create a custom profile image for your site.
+
+This API is not intended for commercial use. It will not be sold, used, modified or redistributed without the written permission of the owners.
+
+We ask that you verify the ID of each user before using this API.
+
+See our FAQ page for more information.
