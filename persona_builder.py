@@ -51,6 +51,8 @@ def save_json(data, filename):
     with open(filename, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=4)
 
+import requests
+
 def generate_persona_from_data(user_data):
     prompt_base = (
         "Create a detailed persona of a Reddit user including traits, interests, tone, "
@@ -62,15 +64,32 @@ def generate_persona_from_data(user_data):
         "comments": user_data["comments"][:3]
     }
     prompt = prompt_base + json.dumps(trimmed_data, indent=2)
-    prompt = prompt[:1000]
 
     try:
-        generator = pipeline("text-generation", model="gpt2-medium")
-        result = generator(prompt, max_new_tokens=300, temperature=0.7)
-        return result[0]["generated_text"]
+        headers = {
+            "Authorization": f"Bearer {os.getenv('OPENROUTER_API_KEY')}",
+            "HTTP-Referer": "https://reddit-persona.onrender.com",
+            "Content-Type": "application/json"
+        }
+
+        payload = {
+            "model": "openrouter/openai/gpt-3.5-turbo",
+            "messages": [
+                {"role": "system", "content": "You are a persona analyst."},
+                {"role": "user", "content": prompt}
+            ],
+            "temperature": 0.7
+        }
+
+        response = requests.post("https://openrouter.ai/api/v1/chat/completions", headers=headers, json=payload)
+        response.raise_for_status()
+        result = response.json()
+        return result["choices"][0]["message"]["content"]
+
     except Exception as e:
         print("Error generating persona:", repr(e))
         return None
+
 
 def save_persona_text(persona_text, username):
     os.makedirs("outputs", exist_ok=True)
