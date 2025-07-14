@@ -3,6 +3,8 @@ import os
 import praw
 import json
 from transformers import pipeline
+import traceback
+    
 
 load_dotenv()
 
@@ -87,8 +89,11 @@ def generate_persona_from_data(user_data):
         return result["choices"][0]["message"]["content"]
 
     except Exception as e:
-        print("Error generating persona:", repr(e))
-        return None
+    
+    print("Error generating persona:", repr(e))
+    traceback.print_exc()
+    return None
+
 
 
 def save_persona_text(persona_text, username):
