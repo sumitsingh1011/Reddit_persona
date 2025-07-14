@@ -90,7 +90,7 @@ def generate_persona_from_data(user_data):
 
     except Exception as e:
     
-    print("Error generating persona:", repr(e))
+     print("Error generating persona:", repr(e))
     traceback.print_exc()
     return None
 
